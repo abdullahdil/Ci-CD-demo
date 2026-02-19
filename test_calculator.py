@@ -6,3 +6,9 @@ def test_addition():
 
 def test_subtraction():
     assert subtract(10, 5) == 5
+
+from calculator import add, subtract, multiply # Update import
+
+def test_multiplication():
+    assert multiply(3, 5) == 15
+    assert multiply(-1, 5) == -5
