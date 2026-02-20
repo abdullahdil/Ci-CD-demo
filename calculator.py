@@ -5,7 +5,7 @@ def subtract(a, b):
     return a - b
     
 def muldiv(a,b):
-    return ((a*b)+a/b))
+    return ((a*b)+(a/b))
     
 def multiply(a, b):
     return a * b
