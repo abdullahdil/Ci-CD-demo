@@ -28,3 +28,22 @@ jobs:
       - name: Run Math Tests (Pytest)
         run: |
           pytest
+  deploy:
+    needs: build-and-test    # This is the "Gate". If tests fail, CD NEVER starts.
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' # Only deploy from Main!
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v1.0.${{ github.run_number }}
+          name: Release v1.0.${{ github.run_number }}
+          body: |
+            Automated Release by CI/CD Pipeline.
+            New features included in this build!
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
