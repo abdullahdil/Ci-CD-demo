@@ -13,6 +13,9 @@ def divmul(a,b):
 def multiply(a, b):
     return a * b
 
+def multiplyadd(a, b):
+    return ((a*b)+(a+b))
+
 def addmul(a, b):
     return ((a+b)*(a*b))
 
